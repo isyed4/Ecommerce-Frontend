@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Home = () => {
+const Home = (props) => {
   const [item, setItem] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Home = () => {
         <li>{electronic.price}</li>
         <li>{electronic.rating}</li>
         <img src={electronic.image_url} alt="electronic image" />
-        <button>Add to Cart</button>
+        <button onClick={()=>props.handleAddtoCart(electronic)}>Add to Cart</button>
       </ul>
     );
   });
