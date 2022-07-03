@@ -25,6 +25,7 @@ const Home = () => {
         <li>{electronic.price}</li>
         <li>{electronic.rating}</li>
         <img src={electronic.image_url} alt="electronic image" />
+        <button>Add to Cart</button>
       </ul>
     );
   });
