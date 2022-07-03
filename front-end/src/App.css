@@ -11,9 +11,10 @@
   height: 310px;
 }
 
-.header{
-  height: 60px;
+ .header{
+  height: 110px;
   display: flex;
+  /* justify-content: center; */
   align-items: center;
   background-color: black;
   position: sticky;
@@ -28,4 +29,37 @@
   margin-top: 18px;
 }
 
+.header__search{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 24px;
+}
+
+.header__searchInput{
+  height: 12px;
+  padding: 10px;
+  border: none;
+  width: 100%;
+}
+
+.header__searchIcon{
+  padding: 5px;
+  height: 22px;
+  background-color: lightblue;
+}
+
+
+.header__nav{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header__option{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px ;
+}
 
