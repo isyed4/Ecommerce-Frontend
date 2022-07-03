@@ -34,7 +34,7 @@ const Home = () => {
       <div className="home__container">
         <img
           className="home__image"
-          src="https://cms.qz.com/wp-content/uploads/2018/11/mavic-air_flame-red_-1-e1542646586211.jpg?quality=75&strip=all&w=410&h=231"
+          src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-tech-2022-1643751399.jpg"
           alt="home image"
         />
       </div>
