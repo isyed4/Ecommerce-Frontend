@@ -25,7 +25,9 @@ const Home = (props) => {
         <li>{electronic.price}</li>
         <li>{electronic.rating}</li>
         <img src={electronic.image_url} alt="electronic image" />
-        <button onClick={()=>props.handleAddtoCart(electronic)}>Add to Cart</button>
+        <button onClick={() => props.handleAddtoCart(electronic)}>
+          Add to Cart
+        </button>
       </ul>
     );
   });
