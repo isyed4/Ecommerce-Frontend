@@ -3,16 +3,6 @@ import axios from "axios";
 
 const Home = () => {
   const [item, setItem] = useState([]);
-//   const [search, setSearch] = useState("");
-
-//   const handleChange = (event) => {
-//     setSearch(event.target.value);
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log(item.name);
-//   };
 
   useEffect(() => {
     getReq();
@@ -40,18 +30,16 @@ const Home = () => {
   });
 
   return (
-    <>
-      {/* <form onSubmit={handleSubmit}>
-        <input
-          onChange={handleChange}
-          value={search}
-          type="text"
-          placeholder="look for electronics"
+    <div className="home">
+      <div className="home__container">
+        <img
+          className="home__image"
+          src="https://cms.qz.com/wp-content/uploads/2018/11/mavic-air_flame-red_-1-e1542646586211.jpg?quality=75&strip=all&w=410&h=231"
+          alt="home image"
         />
-        <input type="submit" value="Search" />
-      </form> */}
+      </div>
       {displayItems}
-    </>
+    </div>
   );
 };
 
