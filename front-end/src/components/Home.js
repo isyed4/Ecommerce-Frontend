@@ -3,16 +3,16 @@ import axios from "axios";
 
 const Home = () => {
   const [item, setItem] = useState([]);
-  const [search, setSearch] = useState("");
+//   const [search, setSearch] = useState("");
 
-  const handleChange = (event) => {
-    setSearch(event.target.value);
-  };
+//   const handleChange = (event) => {
+//     setSearch(event.target.value);
+//   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(item.name);
-  };
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log(item.name);
+//   };
 
   useEffect(() => {
     getReq();
@@ -41,7 +41,7 @@ const Home = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
           value={search}
@@ -49,7 +49,7 @@ const Home = () => {
           placeholder="look for electronics"
         />
         <input type="submit" value="Search" />
-      </form>
+      </form> */}
       {displayItems}
     </>
   );
