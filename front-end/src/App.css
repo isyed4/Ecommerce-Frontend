@@ -3,12 +3,20 @@
  
 }
 
-
 .App .displayItems{
   list-style: none;
 }
 
+.App .displayCartItems{
+  list-style: none;
+}
+
 .App .displayItems img{
+  width: 400px;
+  height: 310px;
+}
+
+.App .displayCartItems img{
   width: 400px;
   height: 310px;
 }

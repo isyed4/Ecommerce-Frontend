@@ -1,6 +1,5 @@
 import "./App.css";
 import Home from "./components/Home";
-import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Header from "./components/Header";
 import { Route, Routes, Link } from "react-router-dom";
@@ -12,9 +11,16 @@ function App() {
  const [cartItem, setCartItem] = useState([])
 
  const handleAddtoCart = (electronic) => {
-   copy = [...cartItem]
+   let copy = [...cartItem]
    copy.push(electronic)
    setCartItem(copy)
+ }
+
+ const handleRemoveItem = (electronicId) => {
+    let filteredArr = cartItem.filter((electronic, index)=>{
+      return(index !== electronicId)
+    })
+    setCartItem(filteredArr)
  }
 
 
@@ -26,9 +32,9 @@ function App() {
       <Header/>
 
       <Routes>
-        <Route path="/" element={<Home />} handleAddtoCart={handleAddtoCart}/>
+        <Route path="/" element={<Home handleAddtoCart={handleAddtoCart}/> } />
         <Route path="/login" element={<Login />}/>
-        <Route path="/checkout" element={<Checkout/>} cartItem = {cartItem} />
+        <Route path="/checkout" element={<Checkout cartItem = {cartItem} handleRemoveItem={handleRemoveItem}/>}  />
       </Routes>
     </div>
   );
