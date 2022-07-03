@@ -5,20 +5,19 @@ import Header from "./components/Header";
 import { Route, Routes, Link } from "react-router-dom";
 import Checkout from "./components/Checkout";
 import { useState } from "react";
+import Subtotal from "./components/Subtotal";
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
-  const [count, setCount] = useState(0)
-
+  const [count, setCount] = useState(0);
 
   const handleAddtoCart = (electronic) => {
     let copy = [...cartItem];
     copy.push(electronic);
     setCartItem(copy);
 
-    let cartCount = count + 1
-    setCount(cartCount)
-
+    let cartCount = count + 1;
+    setCount(cartCount);
   };
 
   const handleRemoveItem = (electronicId) => {
@@ -27,12 +26,12 @@ function App() {
     });
     setCartItem(filteredArr);
 
-    setCount(count -1)
+    setCount(count - 1);
   };
 
   return (
     <div className="App">
-      <Header count={count}/>
+      <Header count={count} />
 
       <Routes>
         <Route path="/" element={<Home handleAddtoCart={handleAddtoCart} />} />
@@ -40,9 +39,10 @@ function App() {
         <Route
           path="/checkout"
           element={
-            <Checkout cartItem={cartItem} handleRemoveItem={handleRemoveItem} />
+            <Checkout cartItem={cartItem} count={count} handleRemoveItem={handleRemoveItem} />
           }
         />
+  
       </Routes>
     </div>
   );
