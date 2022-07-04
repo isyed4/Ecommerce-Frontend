@@ -5,10 +5,6 @@ import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
 
 function Header(props) {
-
-   
-
-
   return (
     <div className="header">
       <Link to="/">
@@ -36,7 +32,9 @@ function Header(props) {
         <Link to="/checkout">
           <div className="header__optionBasket">
             <ShoppingCartIcon />
-            <span className="header__optionLineTwo header__basketCount">{props.count}</span>
+            <span className="header__optionLineTwo header__basketCount">
+              {props.count}
+            </span>
           </div>
         </Link>
       </div>

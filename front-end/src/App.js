@@ -11,6 +11,7 @@ function App() {
   const [cartItem, setCartItem] = useState([]);
   const [count, setCount] = useState(0);
 
+
   const handleAddtoCart = (electronic) => {
     let copy = [...cartItem];
     copy.push(electronic);
@@ -18,6 +19,8 @@ function App() {
 
     let cartCount = count + 1;
     setCount(cartCount);
+
+
   };
 
   const handleRemoveItem = (electronicId) => {
@@ -29,6 +32,8 @@ function App() {
     setCount(count - 1);
   };
 
+   const totalPriceCart = (cart) => cart.reduce((amount, electronic) => electronic.price + amount, 0);
+
   return (
     <div className="App">
       <Header count={count} />
@@ -39,10 +44,14 @@ function App() {
         <Route
           path="/checkout"
           element={
-            <Checkout cartItem={cartItem} count={count} handleRemoveItem={handleRemoveItem} />
+            <Checkout
+              cartItem={cartItem}
+              count={count}
+              handleRemoveItem={handleRemoveItem}
+              totalPriceCart={totalPriceCart} 
+            />
           }
         />
-  
       </Routes>
     </div>
   );

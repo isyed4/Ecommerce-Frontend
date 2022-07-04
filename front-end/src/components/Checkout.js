@@ -1,5 +1,4 @@
 import React from "react";
-// import Subtotal from "./Subtotal";
 import CurrencyFormat from "react-currency-format";
 
 function Checkout(props) {
@@ -26,28 +25,28 @@ function Checkout(props) {
 
       <div>
         <h2 className="checkout__right">
-        <div className="subtotal">
-      <CurrencyFormat
-        renderText={(value) => (
-          <>
-            <p>
-              Subtotal ({props.count} items):
-              <strong>0</strong>
-            </p>
-            <small className="subtotal__gift">
-              <input type="checkbox" /> This order contains a gift
-            </small>
-          </>
-        )}
-        decimalScale={2}
-        value={0}
-        displayType={"text"}
-        thousandSeparator={true}
-        prefix={"$"}
-      />
+          <div className="subtotal">
+            <CurrencyFormat
+              renderText={(value) => (
+                <>
+                  <p>
+                    Subtotal ({props.count} items):
+                    <strong>{value}</strong>
+                  </p>
+                  <small className="subtotal__gift">
+                    <input type="checkbox" /> This order contains a gift
+                  </small>
+                </>
+              )}
+              decimalScale={2}
+              value={props.totalPriceCart(props.cartItem)}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"$"}
+            />
 
-      <button>Proceed to Checkout</button>
-    </div>
+            <button>Proceed to Checkout</button>
+          </div>
         </h2>
       </div>
     </div>
