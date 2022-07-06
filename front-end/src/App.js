@@ -5,12 +5,14 @@ import Header from "./components/Header";
 import { Route, Routes, Link } from "react-router-dom";
 import Checkout from "./components/Checkout";
 import { useState } from "react";
-import Subtotal from "./components/Subtotal";
+import Activate from "./components/Activate";
+import ResetPassword from "./components/ResetPassword";
+import ResetPasswordConfirm from "./components/ResetPasswordConfirm";
+import Signup from "./components/Signup";
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
   const [count, setCount] = useState(0);
-
 
   const handleAddtoCart = (electronic) => {
     let copy = [...cartItem];
@@ -19,8 +21,6 @@ function App() {
 
     let cartCount = count + 1;
     setCount(cartCount);
-
-
   };
 
   const handleRemoveItem = (electronicId) => {
@@ -32,7 +32,8 @@ function App() {
     setCount(count - 1);
   };
 
-   const totalPriceCart = (cart) => cart.reduce((amount, electronic) => electronic.price + amount, 0);
+  const totalPriceCart = (cart) =>
+    cart.reduce((amount, electronic) => electronic.price + amount, 0);
 
   return (
     <div className="App">
@@ -40,7 +41,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home handleAddtoCart={handleAddtoCart} />} />
-        <Route path="/login" element={<Login />} />
         <Route
           path="/checkout"
           element={
@@ -48,10 +48,16 @@ function App() {
               cartItem={cartItem}
               count={count}
               handleRemoveItem={handleRemoveItem}
-              totalPriceCart={totalPriceCart} 
+              totalPriceCart={totalPriceCart}
             />
           }
         />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/reset_password" element={<ResetPassword/>}/>
+        <Route path="password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm/>}/>
+        <Route path="/activate/:uid/:token" element={<Activate/>}/>
+        
       </Routes>
     </div>
   );
