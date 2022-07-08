@@ -10,6 +10,9 @@ import ResetPassword from "./components/ResetPassword";
 import ResetPasswordConfirm from "./components/ResetPasswordConfirm";
 import Signup from "./components/Signup";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 function App() {
   const [cartItem, setCartItem] = useState([]);
   const [count, setCount] = useState(0);
@@ -38,27 +41,33 @@ function App() {
   return (
     <div className="App">
       <Header count={count} />
-
-      <Routes>
-        <Route path="/" element={<Home handleAddtoCart={handleAddtoCart} />} />
-        <Route
-          path="/checkout"
-          element={
-            <Checkout
-              cartItem={cartItem}
-              count={count}
-              handleRemoveItem={handleRemoveItem}
-              totalPriceCart={totalPriceCart}
-            />
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="/reset_password" element={<ResetPassword/>}/>
-        <Route path="password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm/>}/>
-        <Route path="/activate/:uid/:token" element={<Activate/>}/>
-        
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home handleAddtoCart={handleAddtoCart} />}
+          />
+          <Route
+            path="/checkout"
+            element={
+              <Checkout
+                cartItem={cartItem}
+                count={count}
+                handleRemoveItem={handleRemoveItem}
+                totalPriceCart={totalPriceCart}
+              />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            path="password/reset/confirm/:uid/:token"
+            element={<ResetPasswordConfirm />}
+          />
+          <Route path="/activate/:uid/:token" element={<Activate />} />
+        </Routes>
+      </Provider>
     </div>
   );
 }

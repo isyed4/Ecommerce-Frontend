@@ -19,12 +19,14 @@ function Header(props) {
         <input type="text" className="header__searchInput" />
         <SearchIcon className="header__searchIcon" />
       </div>
-
+      
       <div className="header__nav">
+        <Link to="/login">
         <div className="header__option">
           <span className="header__optionLineOne">Hello</span>
           <span className="header__optionLineTwo">Sign in</span>
         </div>
+        </Link>
         <div className="header__option">
           <span className="header__optionLineOne">Returns</span>
           <span className="header__optionLineTwo">Orders</span>
