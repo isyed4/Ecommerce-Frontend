@@ -40,8 +40,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header count={count} />
+   
       <Provider store={store}>
+      <Header count={count} />
         <Routes>
           <Route
             path="/"

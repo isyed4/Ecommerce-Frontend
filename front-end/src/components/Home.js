@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { connect } from 'react-redux';
+import { checkAuthenticated, load_user } from '../actions/auth';
+
 
 const Home = (props) => {
+
   const [item, setItem] = useState([]);
+
+  useEffect(()=> {
+    props.checkAuthenticated();
+    props.load_user();
+  }, [])
 
   useEffect(() => {
     getReq();
@@ -10,7 +19,7 @@ const Home = (props) => {
 
   const getReq = async () => {
     try {
-      let response = await axios.get("http://127.0.0.1:8000/electronics/");
+      let response = await axios.get("http://127.0.0.1:8001/electronics/");
       console.log(response.data);
       setItem(response.data);
     } catch (ex) {
@@ -46,4 +55,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default connect(null, {checkAuthenticated, load_user}) (Home);

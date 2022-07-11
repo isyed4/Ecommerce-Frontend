@@ -1,10 +1,41 @@
-import React from "react";
+import React, { Fragment } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Route, Routes, Link } from "react-router-dom";
 import { useState } from "react";
+import { connect } from "react-redux";
+import { logout } from "../actions/auth";
 
-function Header(props) {
+function Header({ logout, isAuthenticated }) {
+  const guestLinks = () => {
+    return (
+      <Fragment>
+        <Link to="/login">
+          <div className="header__option">
+            <span className="header__optionLineOne">Hello</span>
+            <span className="header__optionLineTwo">Sign in</span>
+          </div>
+        </Link>
+
+        <Link to="/signup">
+          <div className="header_option">
+            <span className="header_optionLineOne">Sign Up</span>
+          </div>
+        </Link>
+      </Fragment>
+    );
+  };
+
+  const authLinks = () => {
+    return (
+      <div className="header_option">
+        <a className="header_optionLineOne" onClick={logout} href="#!">
+          Logout
+        </a>
+      </div>
+    );
+  };
+
   return (
     <div className="header">
       <Link to="/">
@@ -19,29 +50,28 @@ function Header(props) {
         <input type="text" className="header__searchInput" />
         <SearchIcon className="header__searchIcon" />
       </div>
-      
+
       <div className="header__nav">
-        <Link to="/login">
-        <div className="header__option">
-          <span className="header__optionLineOne">Hello</span>
-          <span className="header__optionLineTwo">Sign in</span>
-        </div>
-        </Link>
         <div className="header__option">
           <span className="header__optionLineOne">Returns</span>
           <span className="header__optionLineTwo">Orders</span>
         </div>
-        <Link to="/checkout">
+        {/* <Link to="/checkout">
           <div className="header__optionBasket">
             <ShoppingCartIcon />
             <span className="header__optionLineTwo header__basketCount">
               {props.count}
             </span>
           </div>
-        </Link>
+        </Link> */}
+        {isAuthenticated ? authLinks() : guestLinks()}
       </div>
     </div>
   );
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout })(Header);
