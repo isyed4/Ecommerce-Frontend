@@ -5,7 +5,8 @@ import { reset_password_confirm } from '../actions/auth';
 
 
 
-const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
+
+const ResetPasswordConfirm = ({ reset_password_confirm }) => {
 
     const [requestSent, setRequestSent] = useState(false);
     const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
         re_new_password: ''
     })
 
-    // const params = useParams();
+    const params = useParams();
 
     const { new_password, re_new_password } = formData;
 
@@ -24,17 +25,17 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
     const onSubmit = (event) => {
         event.preventDefault()
 
+         
 
-        const uid  = match.params.uid;
-        const token  = match.params.token;
+        const uid  = params.uid;
+        const token  = params.token;
 
 
         reset_password_confirm(uid, token, new_password, re_new_password);
         setRequestSent(true);
     }
 
-    // Is the user authenticated?
-    // Redirect them to the home page
+   
     if (requestSent) {
         return <Navigate to='/'/>
     }

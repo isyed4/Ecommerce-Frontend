@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Header from "./components/Header";
-import { Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Checkout from "./components/Checkout";
 import { useState } from "react";
 import Activate from "./components/Activate";
@@ -40,8 +40,8 @@ function App() {
 
   return (
     <div className="App">
-   
       <Provider store={store}>
+        <Router>
       <Header count={count} />
         <Routes>
           <Route
@@ -63,11 +63,12 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route
-            path="/password/reset/confirm/:uid/:token"
+            path="password/reset/confirm/:uid/:token"
             element={<ResetPasswordConfirm />}
           />
           <Route path="/activate/:uid/:token" element={<Activate />} />
         </Routes>
+        </Router>
       </Provider>
     </div>
   );

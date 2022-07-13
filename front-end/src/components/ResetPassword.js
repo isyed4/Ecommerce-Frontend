@@ -24,8 +24,7 @@ const ResetPassword = ({ reset_password }) => {
         setRequestSent(true);
     };
 
-    // Is the user authenticated?
-    // Redirect them to the home page
+  
     if (requestSent) {
         return <Navigate to='/'/>
     }
