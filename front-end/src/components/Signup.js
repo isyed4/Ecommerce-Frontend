@@ -45,6 +45,7 @@ const Signup = ({ signup, isAuthenticated }) => {
         <div className="container mt-5">
             <h1>Sign Up</h1>
             <p>Create your Account</p>
+            <hr/>
             <form onSubmit={e => onSubmit(e)}>
                  <div className="form-group">
                      <input 

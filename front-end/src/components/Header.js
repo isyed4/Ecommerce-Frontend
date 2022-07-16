@@ -6,20 +6,22 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { logout } from "../actions/auth";
 
+
 function Header({ logout, isAuthenticated }) {
   const guestLinks = () => {
     return (
       <Fragment>
-        <Link to="/login">
+        <Link style={{ textDecoration: 'none' }} to="/login">
           <div className="header__option">
-            <span className="header__optionLineOne">Hello</span>
+            <span className="header__optionLineOne">Hello,</span>
             <span className="header__optionLineTwo">Sign in</span>
           </div>
         </Link>
 
-        <Link to="/signup">
-          <div className="header_option">
-            <span className="header_optionLineOne">Sign Up</span>
+        <Link style={{ textDecoration: 'none' }} to="/signup">
+          <div className="header__option">
+            <span className="header__optionLineOne">New?</span>
+            <span className="header__optionLineTwo">Sign Up</span>
           </div>
         </Link>
       </Fragment>
@@ -28,8 +30,8 @@ function Header({ logout, isAuthenticated }) {
 
   const authLinks = () => {
     return (
-      <div className="header_option">
-        <a className="header_optionLineOne" onClick={logout} href="#!">
+      <div className="header__option">
+        <a className="header__optionLineTwoA" onClick={logout} href="#!">
           Logout
         </a>
       </div>
@@ -52,18 +54,11 @@ function Header({ logout, isAuthenticated }) {
       </div>
 
       <div className="header__nav">
-        <div className="header__option">
-          <span className="header__optionLineOne">Returns</span>
-          <span className="header__optionLineTwo">Orders</span>
-        </div>
-        {/* <Link to="/checkout">
+      <Link to="/checkout">
           <div className="header__optionBasket">
-            <ShoppingCartIcon />
-            <span className="header__optionLineTwo header__basketCount">
-              {props.count}
-            </span>
+            <ShoppingCartIcon style={{ fontSize: '37px' }}/>
           </div>
-        </Link> */}
+      </Link>
         {isAuthenticated ? authLinks() : guestLinks()}
       </div>
     </div>

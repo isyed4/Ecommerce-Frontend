@@ -31,9 +31,12 @@ const Home = (props) => {
     return (
       <ul className="displayItems">
         <li>{electronic.name}</li>
-        <li>{electronic.price}</li>
-        <li>{electronic.rating}</li>
+        <li>Price: {electronic.price}</li>
+        <li>Rating: {electronic.rating}</li>
+        <br/>
         <img src={electronic.image_url} alt="electronic image" />
+        <br/>
+        <br/>
         <button onClick={() => props.handleAddtoCart(electronic)}>
           Add to Cart
         </button>
@@ -50,7 +53,9 @@ const Home = (props) => {
           alt="home image"
         />
       </div>
+      <div className="home__items__container">
       {displayItems}
+      </div>
     </div>
   );
 };

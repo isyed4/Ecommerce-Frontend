@@ -9,6 +9,8 @@ import Activate from "./components/Activate";
 import ResetPassword from "./components/ResetPassword";
 import ResetPasswordConfirm from "./components/ResetPasswordConfirm";
 import Signup from "./components/Signup";
+import Payment from "./components/Payment";
+
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -38,38 +40,40 @@ function App() {
   const totalPriceCart = (cart) =>
     cart.reduce((amount, electronic) => electronic.price + amount, 0);
 
+  
   return (
     <div className="App">
       <Provider store={store}>
-        <Router>
-      <Header count={count} />
-        <Routes>
-          <Route
-            path="/"
-            element={<Home handleAddtoCart={handleAddtoCart} />}
-          />
-          <Route
-            path="/checkout"
-            element={
-              <Checkout
-                cartItem={cartItem}
-                count={count}
-                handleRemoveItem={handleRemoveItem}
-                totalPriceCart={totalPriceCart}
-              />
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route
-            path="password/reset/confirm/:uid/:token"
-            element={<ResetPasswordConfirm />}
-          />
-          <Route path="/activate/:uid/:token" element={<Activate />} />
-        </Routes>
-        </Router>
-      </Provider>
+          <Router>
+            <Header count={count} />
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Home handleAddtoCart={handleAddtoCart} />}
+                />
+                <Route
+                  path="/checkout"
+                  element={
+                    <Checkout
+                      cartItem={cartItem}
+                      count={count}
+                      handleRemoveItem={handleRemoveItem}
+                      totalPriceCart={totalPriceCart}
+                    />
+                  }
+                />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route
+                  path="password/reset/confirm/:uid/:token"
+                  element={<ResetPasswordConfirm />}
+                />
+                <Route path="/activate/:uid/:token" element={<Activate />} />
+                <Route path="/payment" element={<Payment/>}/>
+              </Routes>
+          </Router>
+        </Provider>
     </div>
   );
 }

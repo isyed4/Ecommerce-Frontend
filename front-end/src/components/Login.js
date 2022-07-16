@@ -31,9 +31,10 @@ const Login = ({ login, isAuthenticated }) => {
     }
 
     return(
-        <div className="container mt-5">
+        <div className="container_mt-5">
             <h1>Sign In</h1>
             <p>Sign into your Account</p>
+            <hr/>
             <form onSubmit={e => onSubmit(e)}>
                  <div className="form-group">
                      <input 
@@ -50,7 +51,7 @@ const Login = ({ login, isAuthenticated }) => {
                      <input 
                      className="form-control"
                      type="password" 
-                     placeholder="password"
+                     placeholder="Password"
                      name="password"
                      value={password}
                      onChange={onChange}

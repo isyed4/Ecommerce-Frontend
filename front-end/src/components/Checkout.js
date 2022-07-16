@@ -1,5 +1,6 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
+import { Link } from "react-router-dom";
 
 function Checkout(props) {
   const displayCartItems = props.cartItem.map((electronic, index) => {
@@ -9,9 +10,12 @@ function Checkout(props) {
         <li>{electronic.price}</li>
         <li>{electronic.rating}</li>
         <img src={electronic.image_url} alt="electronic image" />
+        <br/>
         <button onClick={() => props.handleRemoveItem(index)}>
           Remove Item
         </button>
+        <br/>
+        <br/>
       </>
     );
   });
@@ -44,8 +48,9 @@ function Checkout(props) {
               thousandSeparator={true}
               prefix={"$"}
             />
-
+            <Link to="/payment">
             <button>Proceed to Checkout</button>
+            </Link>
           </div>
         </h2>
       </div>
